@@ -107,8 +107,10 @@ def main():
 
     # Create output file
     now = datetime.now()
+    output_dir = Path.home() / ".meetings" / "todo"
+    output_dir.mkdir(parents=True, exist_ok=True)
     filename = f"notes_{now.strftime('%Y-%m-%d_%H%M%S')}.md"
-    filepath = Path(filename)
+    filepath = output_dir / filename
     with open(filepath, "w") as f:
         f.write(f"# Meeting Notes — {now.strftime('%Y-%m-%d')}\n")
     print(f"Writing to: {filepath}")
